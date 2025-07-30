@@ -4,6 +4,9 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import User from "./models/User.js";
+import Paper from "./models/Paper.js";
+import Collaboration from "./models/Collaboration.js";
 
 dotenv.config();
 
@@ -35,6 +38,54 @@ const Message = mongoose.model('Message', MessageSchema);
 app.get('/api/messages', async (req, res) => {
   const messages = await Message.find();
   res.json(messages);
+});
+
+// USER ENDPOINTS
+app.post("/api/users", async (req, res) => {
+  try {
+    const user = new User(req.body);
+    await user.save();
+    res.status(201).json(user);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.get("/api/users", async (req, res) => {
+  const users = await User.find();
+  res.json(users);
+});
+
+// PAPER ENDPOINTS
+app.post("/api/papers", async (req, res) => {
+  try {
+    const paper = new Paper(req.body);
+    await paper.save();
+    res.status(201).json(paper);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.get("/api/papers", async (req, res) => {
+  const papers = await Paper.find().populate("authors", "username email");
+  res.json(papers);
+});
+
+// COLLABORATION ENDPOINTS
+app.post("/api/collaborations", async (req, res) => {
+  try {
+    const collab = new Collaboration(req.body);
+    await collab.save();
+    res.status(201).json(collab);
+  } catch (err) {
+    res.status(400).json({ error: err.message });
+  }
+});
+
+app.get("/api/collaborations", async (req, res) => {
+  const collabs = await Collaboration.find().populate("paper users", "title username");
+  res.json(collabs);
 });
 
 // Socket.io example
