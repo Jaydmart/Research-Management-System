@@ -34,11 +34,10 @@ const Sidebar = () => {
     { icon: Users, label: 'Collaboration', path: '/collaboration' },
     { icon: BarChart3, label: 'Analytics', path: '/analytics' },
     { icon: Settings, label: 'Settings', path: '/settings' },
-    {user ? (
-      { icon: LogOut, label: 'LogOut', path: '/login' } Redirect to login page after logout
-    ) : (
-      { icon: LogIn, label: 'LogIn', path: '/' }
-      { icon: LogIn, label: 'Register', path: '/' }
+    ...(user
+        ? [{ icon: LogOut, label: 'LogOut', path: '/login' }] //Redirect to login page after logout
+        : [{ icon: LogIn, label: 'LogIn', path: '/' }]
+        )
   ];
 
   return (
