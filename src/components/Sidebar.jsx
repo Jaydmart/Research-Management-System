@@ -1,6 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
 import { motion } from 'framer-motion';
 import { 
   Home, 
@@ -10,19 +11,34 @@ import {
   Settings, 
   BookOpen,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  LogIn,
+  LogOut
 } from 'lucide-react';
 
 const Sidebar = () => {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const location = useLocation();
 
+  const { user, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/login"); // Redirect to login page after logout
+  };
+  
   const menuItems = [
     { icon: Home, label: 'Dashboard', path: '/' },
     { icon: FileText, label: 'Papers', path: '/papers' },
     { icon: Users, label: 'Collaboration', path: '/collaboration' },
     { icon: BarChart3, label: 'Analytics', path: '/analytics' },
     { icon: Settings, label: 'Settings', path: '/settings' },
+    {user ? (
+      { icon: LogOut, label: 'LogOut', path: '/login' } Redirect to login page after logout
+    ) : (
+      { icon: LogIn, label: 'LogIn', path: '/' }
+      { icon: LogIn, label: 'Register', path: '/' }
   ];
 
   return (
