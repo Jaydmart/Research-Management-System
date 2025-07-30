@@ -4,6 +4,8 @@ import { Server } from 'socket.io';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import authRoutes from "./routes/auth.js";
+import authMiddleware from "./middleware/auth.js";
 import User from "./models/User.js";
 import Paper from "./models/Paper.js";
 import Collaboration from "./models/Collaboration.js";
@@ -18,6 +20,7 @@ const io = new Server(server, {
 
 app.use(cors());
 app.use(express.json());
+app.use("/api/auth", authRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/rms', {
@@ -38,6 +41,11 @@ const Message = mongoose.model('Message', MessageSchema);
 app.get('/api/messages', async (req, res) => {
   const messages = await Message.find();
   res.json(messages);
+});
+
+// Example of a protected route:
+app.get("/api/me", authMiddleware, async (req, res) => {
+  res.json({ user: req.user });
 });
 
 // USER ENDPOINTS
