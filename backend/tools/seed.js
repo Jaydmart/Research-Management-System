@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import User from '../models/User.js';
 import Paper from '../models/Paper.js';
 import Dataset from '../models/Dataset.js';
+import Notebook from '../models/Notebook.js';
 
 dotenv.config();
 
@@ -17,28 +18,40 @@ async function main() {
   console.log('Connected to MongoDB for seeding');
 
   try {
-    // Create demo user
-    const user = new User({
-      username: 'sofia.torres',
-      email: 'sofia.torres@university.edu',
-      password: 'password123',
-      role: 'researcher'
-    });
-    await user.save();
-    console.log('Created user:', user._id.toString());
+    // Create or get demo user
+    let user = await User.findOne({ username: 'sofia.torres' });
+    if (!user) {
+      user = new User({
+        username: 'sofia.torres',
+        email: 'sofia.torres@university.edu',
+        password: 'password123',
+        role: 'researcher'
+      });
+      await user.save();
+      console.log('Created user:', user._id.toString());
+    } else {
+      console.log('Using existing user:', user._id.toString());
+    }
 
-    // Create demo paper
-    const paper = new Paper({
-      title: 'Un Estudio sobre Inestabilidad Genómica y Sus Implicaciones',
-      abstract: 'Estudio de ejemplo que cita el dataset de demo.',
-      authors: [user._id],
-      createdBy: user._id
-    });
-    await paper.save();
-    console.log('Created paper:', paper._id.toString());
+    // Create or get demo paper
+    let paper = await Paper.findOne({ title: 'Un Estudio sobre Inestabilidad Genómica y Sus Implicaciones' });
+    if (!paper) {
+      paper = new Paper({
+        title: 'Un Estudio sobre Inestabilidad Genómica y Sus Implicaciones',
+        abstract: 'Estudio de ejemplo que cita el dataset de demo.',
+        authors: [user._id],
+        createdBy: user._id
+      });
+      await paper.save();
+      console.log('Created paper:', paper._id.toString());
+    } else {
+      console.log('Using existing paper:', paper._id.toString());
+    }
 
-    // Create demo dataset
-    const dataset = new Dataset({
+    // Create or get demo dataset
+    let dataset = await Dataset.findOne({ title: 'Datos de Secuenciación Genómica - Proyecto Q' });
+    if (!dataset) {
+    dataset = new Dataset({
       title: 'Datos de Secuenciación Genómica - Proyecto Q',
       description: 'Raw genomic sequence output from the Illumina sequencer for Project Q, batch 2. Validated against control.',
       uploader: user._id,
@@ -70,8 +83,67 @@ async function main() {
     // Add citation pointing to the created paper
     dataset.citedInPapers.push({ title: paper.title, paperId: paper._id, status: 'Published', citedAt: new Date() });
 
-    await dataset.save();
-    console.log('Created dataset:', dataset._id.toString());
+      await dataset.save();
+      console.log('Created dataset:', dataset._id.toString());
+    } else {
+      console.log('Using existing dataset:', dataset._id.toString());
+    }
+
+      // Seed demo notebooks referenced by the dataset
+      const notebooksToSeed = [
+        {
+          _id: new mongoose.Types.ObjectId('000000000000000000000204'),
+          title: 'Initial Analysis - Run 1',
+          metadata: { description: 'Initial exploratory analysis for Project Q sequencing batch 2', author: 'sofia.torres' },
+          content: {
+            cells: [
+              { type: 'markdown', value: '# Initial Analysis - Run 1\n\nThis notebook contains the first-pass QC and summary statistics for Project Q sequencing batch 2.' },
+              { type: 'code', language: 'python', value: "import pandas as pd\nimport numpy as np\n# load data\ndf = pd.read_csv('demo/genomic_project_q_v2.1.csv.gz')\n# basic QC\nmissing = df.isnull().sum().sum()\nprint('Total missing values:', missing)\nprint(df.head().to_csv(index=False))" },
+              { type: 'markdown', value: '## Summary\n- Reads: ~120M\n- Samples: 48\n- Notes: Initial QC shows expected coverage across targets.' }
+            ]
+          }
+        },
+        {
+          _id: new mongoose.Types.ObjectId('000000000000000000000209'),
+          title: 'Validation Test - Run 1',
+          metadata: { description: 'Validation and control sample checks for Project Q', author: 'sofia.torres' },
+          content: {
+            cells: [
+              { type: 'markdown', value: '# Validation Test - Run 1\n\nThis notebook runs control-sample comparisons and validation metrics.' },
+              { type: 'code', language: 'python', value: "# pseudo-code\ncontrols = df[df['sample_type']=='control']\nprint('Control samples:', len(controls))\n# compute concordance\nconcordance = 0.998\nprint('Concordance:', concordance)" },
+              { type: 'markdown', value: '## Validation results\n- Concordance: 0.998\n- Comment: Validation passed thresholds.' }
+            ]
+          }
+        },
+        {
+          _id: new mongoose.Types.ObjectId('000000000000000000000215'),
+          title: 'Figure 1 Generation',
+          metadata: { description: 'Notebook used to generate Figure 1 (coverage heatmap) for Project Q', author: 'sofia.torres' },
+          content: {
+            cells: [
+              { type: 'markdown', value: '# Figure 1 Generation\n\nProduces the coverage heatmap used in Figure 1 of the paper.' },
+              { type: 'code', language: 'python', value: "import matplotlib.pyplot as plt\n# compute heatmap from coverage matrix\n# plt.imshow(coverage_matrix)\n# plt.savefig('/public/images/figure1.png')\nprint('Generated figure: figure1.png')" },
+              { type: 'output', subtype: 'image', src: 'https://via.placeholder.com/800x400.png?text=Figure+1+Coverage+Heatmap', caption: 'Coverage heatmap (placeholder)' }
+            ]
+          }
+        }
+      ];
+
+      for (const nb of notebooksToSeed) {
+        const exists = await Notebook.findById(nb._id);
+        if (!exists) {
+          const note = new Notebook(nb);
+          await note.save();
+          console.log('Seeded notebook:', nb._id.toString());
+        } else {
+          // Update existing notebook with enriched content (idempotent)
+          exists.title = nb.title;
+          exists.metadata = nb.metadata;
+          exists.content = nb.content;
+          await exists.save();
+          console.log('Updated existing notebook:', nb._id.toString());
+        }
+      }
 
     console.log('Seeding complete.');
   } catch (err) {

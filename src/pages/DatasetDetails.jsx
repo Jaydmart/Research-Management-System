@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import DatasetLinkedItems from '@/components/DatasetLinkedItems';
 
 const DatasetDetails = () => {
@@ -33,6 +34,9 @@ const DatasetDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>{dataset ? `${dataset.title} — ResearchHub` : 'Dataset Details — ResearchHub'}</title>
+      </Helmet>
       {/* Header */}
       <div className="flex items-center justify-between mb-6">
         <div>

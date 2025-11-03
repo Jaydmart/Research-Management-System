@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { motion } from 'framer-motion';
 import { 
   TrendingUp, 
@@ -142,6 +143,9 @@ const Analytics = () => {
 
   return (
     <div className="space-y-6">
+      <Helmet>
+        <title>Analytics — ResearchHub :: Academic Platform</title>
+      </Helmet>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

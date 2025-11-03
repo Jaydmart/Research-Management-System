@@ -87,3 +87,51 @@ body {
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Notebook / code block theming to match Tailwind theme */
+pre.notebook-code {
+  @apply rounded-lg p-4 overflow-x-auto border border-white/10 bg-white/5 text-sm;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, 'Roboto Mono', 'Courier New', monospace;
+  line-height: 1.5;
+}
+
+/* Ensure highlighted code uses transparent background so our pre background shows through */
+pre.notebook-code code.hljs,
+pre.notebook-code code {
+  display: block;
+  background: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+/* Basic token colors aligned with overall purple/blue accent theme */
+.hljs-comment,
+.hljs-quote {
+  color: #94a3b8; /* muted gray */
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-subst {
+  color: #b794f4; /* soft purple */
+}
+.hljs-string,
+.hljs-title,
+.hljs-name,
+.hljs-type,
+.hljs-attribute {
+  color: #7ee787; /* mint/green */
+}
+.hljs-number,
+.hljs-meta {
+  color: #f6ad55; /* warm orange */
+}
+.hljs-built_in,
+.hljs-builtin-name {
+  color: #63b3ed; /* sky blue */
+}
+
+/* Subtle left accent bar for code blocks */
+pre.notebook-code {
+  box-shadow: inset 4px 0 0 0 rgba(127, 90, 213, 0.12);
+}

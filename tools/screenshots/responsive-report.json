@@ -1,0 +1,450 @@
+[
+  {
+    "status": 200,
+    "url": "http://localhost:5173/",
+    "viewport": {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\home_mobile_375x812.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 375,
+      "h": 812,
+      "docWidth": 375,
+      "docHeight": 2542,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/datasets",
+    "viewport": {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\datasets_mobile_375x812.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 375,
+      "h": 812,
+      "docWidth": 375,
+      "docHeight": 812,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/datasets/690818db3975124675a516cd",
+    "viewport": {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\datasets-690818db3975124675a516cd_mobile_375x812.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 375,
+      "h": 812,
+      "docWidth": 375,
+      "docHeight": 1075,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/papers",
+    "viewport": {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\papers_mobile_375x812.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 375,
+      "h": 812,
+      "docWidth": 375,
+      "docHeight": 2590,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/dashboard",
+    "viewport": {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\dashboard_mobile_375x812.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 375,
+      "h": 812,
+      "docWidth": 375,
+      "docHeight": 812,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/settings",
+    "viewport": {
+      "name": "mobile",
+      "width": 375,
+      "height": 812
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\settings_mobile_375x812.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 375,
+      "h": 812,
+      "docWidth": 375,
+      "docHeight": 1561,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\home_tablet_768x1024.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 768,
+      "h": 1024,
+      "docWidth": 768,
+      "docHeight": 2014,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/datasets",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\datasets_tablet_768x1024.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 768,
+      "h": 1024,
+      "docWidth": 768,
+      "docHeight": 1024,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/datasets/690818db3975124675a516cd",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\datasets-690818db3975124675a516cd_tablet_768x1024.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 768,
+      "h": 1024,
+      "docWidth": 768,
+      "docHeight": 1024,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/papers",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\papers_tablet_768x1024.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 768,
+      "h": 1024,
+      "docWidth": 768,
+      "docHeight": 2194,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/dashboard",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\dashboard_tablet_768x1024.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 768,
+      "h": 1024,
+      "docWidth": 768,
+      "docHeight": 1024,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/settings",
+    "viewport": {
+      "name": "tablet",
+      "width": 768,
+      "height": 1024
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\settings_tablet_768x1024.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 768,
+      "h": 1024,
+      "docWidth": 768,
+      "docHeight": 1341,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/",
+    "viewport": {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\home_desktop_1366x768.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 1366,
+      "h": 768,
+      "docWidth": 1366,
+      "docHeight": 1112,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/datasets",
+    "viewport": {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\datasets_desktop_1366x768.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 1366,
+      "h": 768,
+      "docWidth": 1366,
+      "docHeight": 768,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/datasets/690818db3975124675a516cd",
+    "viewport": {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\datasets-690818db3975124675a516cd_desktop_1366x768.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 1366,
+      "h": 768,
+      "docWidth": 1366,
+      "docHeight": 835,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/papers",
+    "viewport": {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\papers_desktop_1366x768.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [
+        {
+          "tag": "li",
+          "class": "",
+          "id": null,
+          "width": 246,
+          "left": -3,
+          "right": 243
+        },
+        {
+          "tag": "a",
+          "class": "flex items-center space-x-3 p-3 rounded-xl transition-all duration-200 group hover:bg-white/5",
+          "id": null,
+          "width": 246,
+          "left": -3,
+          "right": 243
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 1366,
+      "h": 768,
+      "docWidth": 1366,
+      "docHeight": 1318,
+      "offenders": [
+        {
+          "tag": "li",
+          "class": "",
+          "id": null,
+          "width": 246,
+          "left": -3,
+          "right": 243
+        },
+        {
+          "tag": "a",
+          "class": "flex items-center space-x-3 p-3 rounded-xl transition-all duration-200 group hover:bg-white/5",
+          "id": null,
+          "width": 246,
+          "left": -3,
+          "right": 243
+        }
+      ]
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/dashboard",
+    "viewport": {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\dashboard_desktop_1366x768.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 1366,
+      "h": 768,
+      "docWidth": 1366,
+      "docHeight": 768,
+      "offenders": []
+    }
+  },
+  {
+    "status": 200,
+    "url": "http://localhost:5173/settings",
+    "viewport": {
+      "name": "desktop",
+      "width": 1366,
+      "height": 768
+    },
+    "screenshot": "C:\\Users\\USUARIO\\Dev\\Research-Management-System\\tools\\screenshots\\settings_desktop_1366x768.png",
+    "issues": {
+      "horizontalScroll": false,
+      "oversizedElements": [],
+      "consoleErrors": [],
+      "pageErrors": []
+    },
+    "metrics": {
+      "w": 1366,
+      "h": 768,
+      "docWidth": 1366,
+      "docHeight": 1009,
+      "offenders": []
+    }
+  }
+]
