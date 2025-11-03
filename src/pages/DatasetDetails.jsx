@@ -9,6 +9,22 @@ const DatasetDetails = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  // Helper: format a username or email into a proper display name
+  const formatUploaderName = (uploader) => {
+    if (!uploader) return 'Unknown';
+    // uploader may be an object or string
+    let raw = '';
+    if (typeof uploader === 'string') raw = uploader;
+    else if (uploader.username) raw = uploader.username;
+    else if (uploader.email) raw = uploader.email.split('@')[0];
+    else return 'Unknown';
+
+    // If it's an email-like or dot/underscore separated username, split on non-word chars
+    const parts = raw.replace(/[_\.]+/g, ' ').split(/\s+/).filter(Boolean);
+    const titled = parts.map(p => p.length ? (p.charAt(0).toUpperCase() + p.slice(1).toLowerCase()) : '').join(' ');
+    return titled || raw;
+  };
+
   useEffect(() => {
     const fetchDataset = async () => {
       try {
@@ -57,7 +73,7 @@ const DatasetDetails = () => {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white/5 p-4 rounded-lg">
         <div>
           <div className="text-sm text-gray-400">Uploader</div>
-          <div className="font-medium">{dataset.uploader ? dataset.uploader.username : 'Unknown'}</div>
+          <div className="font-medium">{formatUploaderName(dataset.uploader)}</div>
         </div>
         <div>
           <div className="text-sm text-gray-400">Upload Date</div>
