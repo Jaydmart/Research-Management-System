@@ -17,7 +17,8 @@ const Notebook = () => {
     let mounted = true;
     const fetchNotebook = async () => {
       try {
-        const res = await fetch(`/api/notebooks/${id}`);
+        const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
+        const res = await fetch(`${API_BASE}/api/notebooks/${id}`);
         if (!res.ok) {
           // backend may not implement notebooks yet - handle gracefully
           throw new Error(`Notebook fetch failed: ${res.status}`);
