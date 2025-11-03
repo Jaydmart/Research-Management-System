@@ -145,6 +145,22 @@ async function main() {
         }
       }
 
+      // Ensure there's at least one demo message so /api/messages returns something
+      try {
+        const MessageSchema = new mongoose.Schema({ user: String, message: String, time: { type: Date, default: Date.now } });
+        const Message = mongoose.models.Message || mongoose.model('Message', MessageSchema);
+        const existingMessages = await Message.find().limit(1);
+        if (existingMessages.length === 0) {
+          const demoMsg = new Message({ user: 'sofia.torres', message: 'Welcome to the demo instance! This is a seeded message.' });
+          await demoMsg.save();
+          console.log('Seeded demo message:', demoMsg._id.toString());
+        } else {
+          console.log('Messages already exist, skipping demo message seed.');
+        }
+      } catch (err) {
+        console.error('Message seeding error:', err);
+      }
+
     console.log('Seeding complete.');
   } catch (err) {
     console.error('Seeding error:', err);
