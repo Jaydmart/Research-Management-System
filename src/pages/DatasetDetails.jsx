@@ -12,8 +12,8 @@ const DatasetDetails = () => {
   useEffect(() => {
     const fetchDataset = async () => {
       try {
-        const API_BASE = import.meta.env.DEV ? 'http://localhost:4000' : '';
-        const res = await fetch(`${API_BASE}/api/datasets/${id}`);
+  const API_BASE = import.meta.env.VITE_API_BASE || 'http://localhost:4000';
+  const res = await fetch(`${API_BASE}/api/datasets/${id}`);
         if (!res.ok) throw new Error('Failed to fetch dataset');
         const data = await res.json();
         setDataset(data);
