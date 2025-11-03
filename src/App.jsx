@@ -4,6 +4,9 @@ import { Helmet } from 'react-helmet';
 import { Toaster } from '@/components/ui/toaster';
 import Dashboard from '@/pages/Dashboard.jsx';
 import Papers from '@/pages/Papers.jsx';
+import DataHub from '@/pages/DataHub.jsx';
+import DatasetDetails from '@/pages/DatasetDetails.jsx';
+import UploadDataset from '@/pages/UploadDataset.jsx';
 import Collaboration from '@/pages/Collaboration.jsx';
 import Analytics from '@/pages/Analytics.jsx';
 import Settings from '@/pages/Settings.jsx';
@@ -27,6 +30,9 @@ function App() {
               <Routes>
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/papers" element={<Papers />} />
+                <Route path="/datasets" element={<DataHub />} />
+                <Route path="/datasets/:id" element={<DatasetDetails />} />
+                <Route path="/datasets/upload" element={<UploadDataset />} />
                 <Route path="/collaboration" element={<Collaboration />} />
                 <Route path="/analytics" element={<Analytics />} />
                 <Route path="/settings" element={<Settings />} />

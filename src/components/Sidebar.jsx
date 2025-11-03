@@ -7,6 +7,7 @@ import {
   Home, 
   FileText, 
   Users, 
+  Database,
   BarChart3, 
   Settings, 
   BookOpen,
@@ -31,6 +32,7 @@ const Sidebar = () => {
   const menuItems = [
     { icon: Home, label: 'Dashboard', path: '/' },
     { icon: FileText, label: 'Papers', path: '/papers' },
+  { icon: Database, label: 'Data Hub', path: '/datasets' },
     { icon: Users, label: 'Collaboration', path: '/collaboration' },
     { icon: BarChart3, label: 'Analytics', path: '/analytics' },
     { icon: Settings, label: 'Settings', path: '/settings' },

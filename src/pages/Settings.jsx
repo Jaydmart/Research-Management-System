@@ -17,25 +17,18 @@ import {
   EyeOff
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 
 const Settings = () => {
-  const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('profile');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleFeatureClick = (feature) => {
-    toast({
-      title: `⚙️ ${feature}`,
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    console.info(`${feature} clicked (demo mode)`);
   };
 
   const handleSave = () => {
-    toast({
-      title: "✅ Settings Saved",
-      description: "Your settings have been updated successfully!",
-    });
+    // Demo: avoid popup; log action instead
+    console.info('Settings saved (demo mode)');
   };
 
   const tabs = [

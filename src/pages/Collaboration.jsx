@@ -20,17 +20,12 @@ import {
   Activity
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 
 const Collaboration = () => {
-  const { toast } = useToast();
   const [activeTab, setActiveTab] = useState('collaborators');
 
   const handleFeatureClick = (feature) => {
-    toast({
-      title: `🤝 ${feature}`,
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    console.info(`${feature} clicked (demo mode)`);
   };
 
   const collaborators = [

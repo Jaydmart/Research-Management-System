@@ -17,17 +17,13 @@ import {
   Target
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 
 const Analytics = () => {
-  const { toast } = useToast();
+  // Demo: disable popup toasts
   const [timeRange, setTimeRange] = useState('6months');
 
   const handleFeatureClick = (feature) => {
-    toast({
-      title: `📊 ${feature}`,
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    console.info(`${feature} clicked (demo mode)`);
   };
 
   const overviewStats = [

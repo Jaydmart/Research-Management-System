@@ -16,18 +16,14 @@ import {
   Tag
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 
 const Papers = () => {
-  const { toast } = useToast();
+  // Demo: disable popup toasts
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
   const handleFeatureClick = (feature) => {
-    toast({
-      title: `📄 ${feature}`,
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    console.info(`${feature} clicked (demo mode)`);
   };
 
   const papers = [

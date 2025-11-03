@@ -3,23 +3,16 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Search, Bell, Plus, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useToast } from '@/components/ui/use-toast';
 
 const Header = () => {
-  const { toast } = useToast();
-
   const handleNotification = () => {
-    toast({
-      title: "🔔 Notifications",
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    // Demo: silently ignore or log instead of showing a popup
+    console.info('Notifications clicked (demo mode)');
   };
 
   const handleNewPaper = () => {
-    toast({
-      title: "📄 New Paper",
-      description: "🚧 This feature isn't implemented yet—but don't worry! You can request it in your next prompt! 🚀",
-    });
+    // Demo: silently ignore or log instead of showing a popup
+    console.info('New Paper clicked (demo mode)');
   };
 
   return (
