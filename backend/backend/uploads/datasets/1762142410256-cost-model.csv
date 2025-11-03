@@ -1,0 +1,5 @@
+Scenario,GH_minutes_per_month,GH_rate_per_min,GH_cost,VPS_count,VPS_cost_each,VPS_monthly_cost,Ops_hours_per_month,Ops_rate_per_hour,Ops_cost,Other_costs,Total_monthly_cost
+Small,1500,0.008,12.00,1,20.00,20.00,3,50,150.00,0.00,182.00
+Medium,8000,0.008,64.00,2,100.00,200.00,10,50,500.00,0.00,764.00
+Large,40000,0.008,320.00,4,250.00,1000.00,30,50,1500.00,0.00,2820.00
+Custom,,,,,,,,,,,,
