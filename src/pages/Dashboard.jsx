@@ -1,5 +1,7 @@
 
 import React from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   FileText, 
@@ -17,7 +19,21 @@ import { Button } from '@/components/ui/button';
 
 const Dashboard = () => {
   // Demo: disable popup toasts
+  const navigate = useNavigate();
+
+  // Helper to create ISO date strings relative to today
+  const getDate = (offsetDays = 0) => {
+    const d = new Date();
+    d.setDate(d.getDate() + offsetDays);
+    return d.toISOString().slice(0, 10);
+  };
+
   const handleFeatureClick = (feature) => {
+    if (feature === 'Start New Research') {
+      // Take the user to the Data Hub (datasets) so they can upload data and start research
+      navigate('/datasets');
+      return;
+    }
     console.info(`${feature} clicked (demo mode)`);
   };
 
@@ -34,7 +50,7 @@ const Dashboard = () => {
       authors: 'Dr. Smith, Dr. Johnson',
       status: 'Under Review',
       journal: 'Nature Climate Change',
-      date: '2024-01-15',
+      date: getDate(-14),
       citations: 23,
       downloads: 145
     },
@@ -43,7 +59,7 @@ const Dashboard = () => {
       authors: 'Dr. Chen, Dr. Williams',
       status: 'Published',
       journal: 'Science',
-      date: '2024-01-10',
+      date: getDate(-6),
       citations: 67,
       downloads: 289
     },
@@ -52,20 +68,23 @@ const Dashboard = () => {
       authors: 'Dr. Brown, Dr. Davis',
       status: 'Draft',
       journal: 'Energy Policy',
-      date: '2024-01-08',
+      date: getDate(-3),
       citations: 12,
       downloads: 78
     }
   ];
 
   const upcomingDeadlines = [
-    { task: 'Review for Journal of AI', date: '2024-01-20', priority: 'high' },
-    { task: 'Conference Presentation', date: '2024-01-25', priority: 'medium' },
-    { task: 'Grant Proposal Submission', date: '2024-02-01', priority: 'high' },
+    { task: 'Review for Journal of AI', date: getDate(7), priority: 'high' },
+    { task: 'Conference Presentation', date: getDate(17), priority: 'medium' },
+    { task: 'Grant Proposal Submission', date: getDate(27), priority: 'high' },
   ];
 
   return (
     <div className="space-y-8">
+      <Helmet>
+        <title>Dashboard — ResearchHub :: Academic Platform</title>
+      </Helmet>
       {/* Welcome Section */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

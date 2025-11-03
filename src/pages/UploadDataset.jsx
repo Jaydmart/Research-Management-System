@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const UploadDataset = () => {
   const [file, setFile] = useState(null);
@@ -57,6 +58,9 @@ const UploadDataset = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Upload Dataset — ResearchHub :: Academic Platform</title>
+      </Helmet>
       <h2 className="text-2xl font-bold mb-4">Upload New Dataset</h2>
 
       <form onSubmit={onSubmit} className="space-y-4">

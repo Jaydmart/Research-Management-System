@@ -6,6 +6,7 @@ import cors from 'cors';
 import dotenv from 'dotenv';
 import authRoutes from "./routes/auth.js";
 import datasetsRoutes from "./routes/datasets.js";
+import notebooksRoutes from "./routes/notebooks.js";
 import authMiddleware from "./middleware/auth.js";
 import User from "./models/User.js";
 import Paper from "./models/Paper.js";
@@ -23,6 +24,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/auth", authRoutes);
 app.use("/api/datasets", datasetsRoutes);
+app.use("/api/notebooks", notebooksRoutes);
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/rms', {

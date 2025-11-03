@@ -1,5 +1,7 @@
 
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
   Search, 
@@ -13,7 +15,8 @@ import {
   Trash2,
   Calendar,
   User,
-  Tag
+  Tag,
+  X
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
@@ -22,7 +25,20 @@ const Papers = () => {
   const [selectedFilter, setSelectedFilter] = useState('all');
   const [searchTerm, setSearchTerm] = useState('');
 
+  // Helper to create ISO date strings relative to today
+  const getDate = (offsetDays = 0) => {
+    const d = new Date();
+    d.setDate(d.getDate() + offsetDays);
+    return d.toISOString().slice(0, 10); // YYYY-MM-DD
+  };
+
+  const navigate = useNavigate();
+
   const handleFeatureClick = (feature) => {
+    if (feature === 'New Paper') {
+      navigate('/papers');
+      return;
+    }
     console.info(`${feature} clicked (demo mode)`);
   };
 
@@ -33,7 +49,7 @@ const Papers = () => {
       authors: ['Dr. Sarah Smith', 'Dr. Michael Johnson', 'Dr. Emily Chen'],
       status: 'Published',
       journal: 'Nature Climate Change',
-      date: '2024-01-15',
+      date: getDate(-14),
       citations: 23,
       downloads: 145,
       tags: ['Machine Learning', 'Climate', 'Data Analysis'],
@@ -46,7 +62,7 @@ const Papers = () => {
       authors: ['Dr. Robert Chen', 'Dr. Lisa Williams'],
       status: 'Under Review',
       journal: 'Science',
-      date: '2024-01-10',
+      date: getDate(-6),
       citations: 67,
       downloads: 289,
       tags: ['Quantum Computing', 'Algorithms', 'Optimization'],
@@ -59,7 +75,7 @@ const Papers = () => {
       authors: ['Dr. James Brown', 'Dr. Maria Davis', 'Dr. Alex Wilson'],
       status: 'Draft',
       journal: 'Energy Policy',
-      date: '2024-01-08',
+      date: getDate(-3),
       citations: 12,
       downloads: 78,
       tags: ['Sustainability', 'Energy', 'Policy'],
@@ -72,7 +88,7 @@ const Papers = () => {
       authors: ['Dr. Jennifer Lee', 'Dr. David Kim'],
       status: 'Published',
       journal: 'Medical AI Journal',
-      date: '2023-12-20',
+      date: getDate(-49),
       citations: 89,
       downloads: 456,
       tags: ['Neural Networks', 'Medical', 'AI'],
@@ -85,7 +101,7 @@ const Papers = () => {
       authors: ['Dr. Thomas Anderson', 'Dr. Rachel Green'],
       status: 'Submitted',
       journal: 'Supply Chain Review',
-      date: '2024-01-05',
+      date: getDate(-9),
       citations: 5,
       downloads: 34,
       tags: ['Blockchain', 'Supply Chain', 'Technology'],
@@ -138,6 +154,9 @@ const Papers = () => {
 
   return (
     <div className="space-y-6">
+      <Helmet>
+        <title>Papers — ResearchHub :: Academic Platform</title>
+      </Helmet>
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -148,13 +167,7 @@ const Papers = () => {
           <h1 className="text-3xl font-bold gradient-text">Research Papers</h1>
           <p className="text-gray-400 mt-2">Manage and organize your academic publications</p>
         </div>
-        <Button
-          onClick={() => handleFeatureClick('New Paper')}
-          className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white px-6"
-        >
-          <Plus className="w-4 h-4 mr-2" />
-          New Paper
-        </Button>
+        {/* Removed redundant New Paper button; top-nav already exposes this action */}
       </motion.div>
 
       {/* Search and Filters */}
@@ -167,15 +180,28 @@ const Papers = () => {
         <div className="flex flex-col lg:flex-row gap-4">
           {/* Search */}
           <div className="flex-1">
+            <label htmlFor="papers-search" className="sr-only">Search papers</label>
             <div className="relative">
-              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-400" />
+              {/* Different visual style for page-level search: subtle outline, smaller height, and an explicit clear button */}
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-4 h-4 text-gray-400" />
               <input
-                type="text"
-                placeholder="Search papers, authors, or keywords..."
+                id="papers-search"
+                name="papers-search"
+                type="search"
+                placeholder="Search papers, authors, tags..."
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500/50 text-white placeholder-gray-400"
+                className="w-full pl-10 pr-10 py-2 bg-transparent border border-white/20 rounded-lg focus:outline-none focus:ring-0 focus:border-blue-400/40 text-gray-200 placeholder-gray-500"
               />
+              {searchTerm && (
+                <button
+                  onClick={() => setSearchTerm('')}
+                  aria-label="Clear search"
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 p-1 rounded-md hover:bg-white/5 transition-colors"
+                >
+                  <X className="w-4 h-4 text-gray-400" />
+                </button>
+              )}
             </div>
           </div>
 
