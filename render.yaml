@@ -1,0 +1,38 @@
+# Render service definition for Research Management System backend
+# Replace placeholders with your actual values or set the secrets in Render Dashboard.
+# Deploy with Render's GitHub integration (Render will detect this file and use it),
+# or use the Render Dashboard to create a service with matching settings.
+
+services:
+  - type: web
+    name: rms-backend
+    env: node
+    repo: https://github.com/Jaydmart/Research-Management-System
+    branch: main
+    plan: starter
+    region: oregon
+    buildCommand: npm install
+    startCommand: npm run start
+    rootDir: backend
+    envVars:
+      - key: NODE_ENV
+        value: production
+    # For secrets, either add them via Render Dashboard (recommended) or
+    # define secretEnvVars below if you have Render Secrets configured in your account.
+    # secretEnvVars maps an env var key in the service to a Secret name in Render.
+    secretEnvVars:
+      - key: MONGO_URI
+        name: MONGO_URI
+      - key: JWT_SECRET
+        name: JWT_SECRET
+      # Optional: expose CLIENT_URL for CORS restrictions
+      - key: CLIENT_URL
+        name: CLIENT_URL
+
+# Notes:
+# - After creating the service, set Render Secrets: MONGO_URI (Atlas connection string), JWT_SECRET (strong secret), CLIENT_URL (https://your-site.vercel.app).
+# - The seed script is at backend/tools/seed.js. To populate demo data, run the seed locally (pointing MONGO_URI at Atlas) or run a one-off job in Render:
+#     node tools/seed.js
+#   Make sure working dir is backend when running there, or adjust the command accordingly in a manual job.
+# - Render automatically provides a PORT env var; backend listens on process.env.PORT || 4000.
+# - If you prefer not to use render.yaml, create the Web Service in Render UI and set the same Build and Start commands and root directory.
